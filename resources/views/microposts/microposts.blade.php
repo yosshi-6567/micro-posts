@@ -15,6 +15,11 @@
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     @endif
+                    @if (Auth::id() == $micropost->user_id)
+                        {!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
+                            {!! Form::submit('Edit', ['class' => 'btn btn-warning btn-sm'])!!}
+                        {!! Form::close() !!}
+                    @endif
                     @include('user_favorite.favorite_button', ['micropost' => $micropost])
                 </div>
             </div>

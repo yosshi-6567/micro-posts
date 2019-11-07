@@ -20,4 +20,5 @@
             @endif
         </div>
     </div>
+    {!! link_to_route('microposts.edit', 'このメッセージを編集', ['id' => $micropost->id], ['class' => 'btn btn-light']) !!}
 @endsection

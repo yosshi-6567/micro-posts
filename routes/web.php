@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         
     });
     
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 });
 
 

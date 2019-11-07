@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Micropost; // 追加
+
 class MicropostsController extends Controller
 {
     public function index()
@@ -43,5 +45,34 @@ class MicropostsController extends Controller
         }
 
         return back();
+    }
+    
+    public function edit($id)
+    {
+        $micropost = \App\Micropost::find($id);
+        
+        return  view('microposts.edit',[
+            'micropost' => $micropost,
+            ]);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'content' => 'required|max:191',   
+        ]);
+        
+        //$request->user()->microposts()->edit([
+        //        'content' => $request->content,
+        //    ]);
+        
+        
+        $micropost =Micropost::find($id);
+        $micropost->content = $request->content;
+        $micropost->save();
+
+        return redirect('/');
+        
+        
     }
 }
