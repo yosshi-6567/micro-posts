@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.buttonInline {
+    display: inline-block;
+    margin: 5px;
+}
